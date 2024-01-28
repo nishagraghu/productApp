@@ -1,19 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,Appearance ,useColorScheme,TouchableOpacity } from 'react-native';
 import { store } from './store';
 import { Provider } from 'react-redux'
-import { Counter } from './Counter';
+// import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import TabNavigationStack from './app/routing/TabNavigationStack';
+
+
+// const Tab = createBottomTabNavigator();
+
+
+
 
 export default function App() {
-  
+  const isDarkMode = useColorScheme() === 'dark';
+
+
   return (
-    <Provider store={store}> 
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Counter />
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer
+       theme={isDarkMode ? DarkTheme : DefaultTheme}
+      >
+        <TabNavigationStack />
+      </NavigationContainer >
     </Provider>
+
   );
 }
 
