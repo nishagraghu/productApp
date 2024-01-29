@@ -1,12 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View ,Appearance ,useColorScheme,TouchableOpacity } from 'react-native';
+import { StyleSheet,useColorScheme } from 'react-native';
 import { store } from './store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import 'react-native-gesture-handler';
+
 // import { NavigationContainer } from '@react-navigation/native';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
 import TabNavigationStack from './app/routing/TabNavigationStack';
 
 

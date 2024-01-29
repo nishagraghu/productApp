@@ -1,8 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice ,createAsyncThunk  } from '@reduxjs/toolkit'
 
 const initialState = {
+  posts: [],
+  error: null,
+  loading: 'idle',
   value: 0,
 }
+export const fetchUserByData = createAsyncThunk(
+  'posts/fetchPosts',
+  async () => {
+    const response = await fetch('http://192.168.1.18/vSP/data.php?data=posts');
+    const data = await response.json();
+   
+    return data;
+  }
+);
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -22,7 +34,30 @@ export const counterSlice = createSlice({
       state.value += action.payload
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserByData.pending, (state) => {
+        state.loading = 'loading';
+        state.error = null;
+        state.data = [];
+      })
+      .addCase(fetchUserByData.fulfilled, (state, action) => {
+        state.loading = 'idle';
+        state.posts = action.payload;
+       
+        // state.entities.push(action.payload);
+      })
+      .addCase(fetchUserByData.rejected, (state, action) => {
+        state.loading = 'idle';
+     
+        state.error = action.error.message;
+      });
+  },
+    
+   
+   
 })
+
 
 // Action creators are generated for each case reducer function
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
