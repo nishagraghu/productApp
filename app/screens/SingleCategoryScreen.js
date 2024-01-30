@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import BlogCard from '../components/BlogCard';
 
 export default SingleCategoryScreen = ({route}) => {
-    const { posts = []  } = useSelector(state => state.counter);
+    const { posts   } = useSelector(state => state.counter);
     return (
         <SafeAreaView style={styles.page}>
             <ScrollView contentContainerStyle={styles.content}>
@@ -15,7 +15,8 @@ export default SingleCategoryScreen = ({route}) => {
                     <BlogCard 
                   
                     key={index} item={item} />
-                ))}
+                ))} 
+
                 
             </ScrollView>
         </SafeAreaView>

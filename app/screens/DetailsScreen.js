@@ -1,14 +1,13 @@
-import {  View , Text} from 'react-native';
+import {  View } from 'react-native';
+import FullBlog from '../components/FullBlog';
 
-
-function DetailsScreen({route, navigation }) {
+function DetailsScreen({route }) {
    
     const date  = route.params?.item;
     return (
       <View style={{ flex: 1 }}>
-       <Text  
-       testID='detailsScreenText'
-       >Details Screen</Text>
+       <FullBlog 
+       item={date} />
       </View>
     );
   }

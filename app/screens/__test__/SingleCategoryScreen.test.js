@@ -5,6 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import SingleCategoryScreen from '../SingleCategoryScreen';
 import { NavigationContainer } from '@react-navigation/native';
 
+
 // Create a mock store
 const mockStore = configureMockStore();
 const store = mockStore({
@@ -52,4 +53,6 @@ describe('SingleCategoryScreen', () => {
 
      
     });
+   
+    
 });

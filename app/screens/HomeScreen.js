@@ -21,7 +21,7 @@ export default HomeScreen = () => {
 
     }, [dispatch]);
     
-    const { posts = [], loading, error } = useSelector(state => state.counter);
+    const { posts , loading, error } = useSelector(state => state.counter);
      const { categories } = useSelector(state => state.categories);
     
     return (
@@ -33,7 +33,9 @@ export default HomeScreen = () => {
                     <BlogCard key={index} item={item} />
                 ))}
                 <ActivityIndicator animating={loading} color={MD2Colors.red800} />
-                {(error != null) && <View><Text>{error}</Text></View>}
+                {(error != null) && <View
+                  testID='errorView'
+                ><Text>{error}</Text></View>}
             </ScrollView>
 
 

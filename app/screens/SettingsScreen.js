@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, Appearance, useColorScheme, TouchableOpacity, Image ,Linking  } from 'react-native';
-
+import { StyleSheet, Text, View, Image ,Linking  } from 'react-native';
 import React from 'react';
 import { List, MD3Colors } from 'react-native-paper';
 
@@ -8,8 +7,8 @@ import { List, MD3Colors } from 'react-native-paper';
 export default SettingsScreen = () => {
     const handleEmailClick = () => {
         const email = 'nishag619@gmail.com';
-        const subject = 'Subject of the email'; // You can customize the subject
-        const body = 'Body of the email'; // You can customize the body
+        const subject = 'Subject of the email'; 
+        const body = 'Body of the email'; 
     
         const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
     
@@ -32,15 +31,18 @@ export default SettingsScreen = () => {
                     <List.Subheader>
                         Contact us
                     </List.Subheader>
-                    <List.Item title="nishag619@gmail.com" left={() => <List.Icon icon="email" />}         onPress={handleEmailClick}  />
+                    <List.Item 
+                    testID='emailListItem'
+                    title="nishag619@gmail.com" left={() => <List.Icon icon="email" />}         onPress={handleEmailClick}  />
                     <List.Item
                         title="8867460746"
+                        testID='phoneListItem'
                         left={() => <List.Icon color={MD3Colors.tertiary70} icon="phone" />}
                         onPress={handlePhoneCall}
                     />
                     {/* show 3 icons in  one line */}
                     <View style={styles.iconContainer}>
-                        <List.Icon icon="facebook" />
+                        <List.Icon  icon="facebook" />
                         <List.Icon icon="twitter" />
                         <List.Icon icon="instagram" />
            

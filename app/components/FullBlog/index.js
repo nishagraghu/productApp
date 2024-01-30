@@ -13,11 +13,7 @@ export default FullBlog = ({
   item
 
 }) =>{
-  const navigation = useNavigation();
-  const navigateToOtherScreen = (screenName, params) => {
-    
-     navigation.navigate(screenName, params);
-  };
+
   return (
   // techable opacity
 

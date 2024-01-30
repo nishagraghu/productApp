@@ -1,28 +1,17 @@
 import * as React from 'react';
-import { Alert, ScrollView, StyleSheet, View ,TouchableOpacity } from 'react-native';
+import { StyleSheet ,TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {  Card, Text } from 'react-native-paper';
 
-
-import { Button, Card, Paragraph, Title, Text } from 'react-native-paper';
-// const stringWithoutBackslashes = originalString.replace(/\\/g, '');
-
-
-
-export default BlogCard = ({
-  
-  item
-
-}) =>{
+export default BlogCard = ({ item}) =>{
   const navigation = useNavigation();
   const navigateToOtherScreen = (screenName, params) => {
     
      navigation.navigate(screenName, params);
   };
   return (
-  // techable opacity
-
-
-  <TouchableOpacity
+  <TouchableOpacity 
+    testID='cardTouchable'
     onPress={() => navigateToOtherScreen('Details', {item})}
   >
   <Card style={styles.card} >
@@ -39,8 +28,6 @@ export default BlogCard = ({
 
     <Card.Content>
       <Text variant="bodyMedium">
-        {/* http://10.0.2.2/vSP/blog/backend/images/1706512711IMG-20221209-WA0068-_1_.webp  */}
-       
         {item?.description.substring(0, 100)}
       </Text>
     </Card.Content>
