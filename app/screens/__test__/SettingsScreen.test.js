@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import SettingsScreen from '../SettingsScreen';
 
+
 describe('SettingsScreen', () => {
   it('renders correctly', () => {
     const { getByText, getByTestId } = render(<SettingsScreen />);
