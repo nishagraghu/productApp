@@ -1,63 +1,40 @@
-import { Text, View, Appearance, TouchableOpacity, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import React from 'react';
-import BlogCard from '../components/BlogCard';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import { ScrollView, StyleSheet, SafeAreaView, Text, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import {fetchUserByData} from '../../counterSlice';
+import BlogCard from '../components/BlogCard';
+import { fetchUserByData } from '../redux/counterSlice';
+import { fetchCategories } from '../redux/categorySlice';
 
-// HorizontalList
 import HorizontalList from '../components/HorizontalList';
-// import FetchAll from '../utils/FetchAll';
-import { API} from '../Const/urls';
+import { API } from '../Const/urls';
 
 export default HomeScreen = () => {
-    // const toggleTheme = () => {
-    //   Appearance.setColorScheme(Appearance.getColorScheme() === 'dark' ? 'light' : 'dark');
-    // };
-    const data = [
-        {
-            id: 1,
-            title: 'ss',
-            image: 'https://picsum.photos/700',
-        },
-        {
-            id: 2,
-            title: 'ss',
-            image: 'https://picsum.photos/700',
-
-        }, {
-            id: 3,
-            title: 'ss',
-            image: 'https://picsum.photos/700',
-
-        },
-        {
-            id: 4,
-            title: 'ss',
-            image: 'https://picsum.photos/700',
-        }
-    ];
+   
     const dispatch = useDispatch();
 
     React.useEffect(() => {
         dispatch(fetchUserByData(API + 'posts'));
+
         
+        dispatch(fetchCategories(API + 'categories'));
+
     }, [dispatch]);
-    const { posts, loading, error } = useSelector(state => state.counter);
- 
+    
+    const { posts = [], loading, error } = useSelector(state => state.counter);
+     const { categories } = useSelector(state => state.categories);
+    
     return (
         // safe area view
         <SafeAreaView style={styles.page}>
-                <ScrollView contentContainerStyle={styles.content}>
-
-            {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}> */}
-                <HorizontalList style={{ flex: 0.2, alignItems: 'center', justifyContent: 'center' }} data={data} />
-
-                {loading &&posts.map((item, index) => (
-                    <BlogCard key={index}  item={item} />
+            <ScrollView contentContainerStyle={styles.content}>
+                <HorizontalList style={{ flex: 0.2, alignItems: 'center', justifyContent: 'center' }} data={categories} />
+                {!loading && posts.map((item, index) => (
+                    <BlogCard key={index} item={item} />
                 ))}
-                
-                   
-                </ScrollView>
+                <ActivityIndicator animating={loading} color={MD2Colors.red800} />
+                {(error != null) && <View><Text>{error}</Text></View>}
+            </ScrollView>
 
 
             {/* </View> */}

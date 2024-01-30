@@ -1,5 +1,5 @@
 import { StyleSheet,useColorScheme } from 'react-native';
-import { store } from './store';
+import { store } from './app/redux/store';
 import { Provider } from 'react-redux';
 import 'react-native-gesture-handler';
 

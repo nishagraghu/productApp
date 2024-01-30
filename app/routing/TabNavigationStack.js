@@ -46,16 +46,16 @@ const publicRoutes = [
               ),
         }
     },
-    {
-        name: 'Search',
-        component: SearchScreen,
-        options: {
-            tabBarLabel: 'Search',
-            tabBarIcon: ({ color, size }) => (
-                <Ionicons name="search" color={color} size={size} />
-              ),
-        }
-    },
+    // {
+    //     name: 'Search',
+    //     component: SearchScreen,
+    //     options: {
+    //         tabBarLabel: 'Search',
+    //         tabBarIcon: ({ color, size }) => (
+    //             <Ionicons name="search" color={color} size={size} />
+    //           ),
+    //     }
+    // },
     {
         name: 'Settings',
         component: SettingsScreen,

@@ -3,14 +3,16 @@ import { createSlice ,createAsyncThunk  } from '@reduxjs/toolkit'
 const initialState = {
   posts: [],
   error: null,
-  loading: 'idle',
+  loading: false,
   value: 0,
 }
 export const fetchUserByData = createAsyncThunk(
   'posts/fetchPosts',
-  async () => {
-    const response = await fetch('http://192.168.1.18/vSP/data.php?data=posts');
+  async (parameter) => {
+    
+    const response = await fetch(parameter);
     const data = await response.json();
+    console.log({parameter});
    
     return data;
   }
@@ -37,19 +39,19 @@ export const counterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserByData.pending, (state) => {
-        state.loading = 'loading';
+        state.loading = true;
         state.error = null;
         state.data = [];
       })
       .addCase(fetchUserByData.fulfilled, (state, action) => {
-        state.loading = 'idle';
+        state.loading = false;
         state.posts = action.payload;
        
         // state.entities.push(action.payload);
       })
       .addCase(fetchUserByData.rejected, (state, action) => {
-        state.loading = 'idle';
-     
+        state.loading = false;
+     console.log(action.error.message);
         state.error = action.error.message;
       });
   },

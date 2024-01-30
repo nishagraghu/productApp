@@ -16,10 +16,12 @@ export default HorizontalList = ({data}) => {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => (
             <TouchableOpacity
-                onPress={() => navigation.navigate('SingleCategory', {item})}>
+                onPress={() => navigation.navigate('SingleCategoryScreen', {item})}>
                 <View style={{margin: 10}}>
-                <Avatar.Image size={104} source={{uri: item.image}} />
-                <Text style={{textAlign: 'center'}}>eee</Text>
+                <Avatar.Text  size={100}  label={item.category_name} />
+                <Text style={{textAlign: 'center'}}>
+                    {item.category_name}
+                </Text>
                 </View>
             </TouchableOpacity>
             )}
