@@ -1,24 +1,31 @@
 // HorizontalList
 import React from 'react';
-import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
-import {Avatar} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
+import {
+  View, FlatList,
+} from 'react-native';
+import PropTypes from 'prop-types';
+
 import CategoryItem from '../CategoryItem';
 
-
-export default HorizontalList = ({data}) => {
-    const navigation = useNavigation();
-    return (
-        <View>
-        <FlatList
-            data={data}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({item}) => (
-            <CategoryItem item={item} />
-            )}
-        />
-        </View>
-    );
-    }
+function HorizontalList({ data }) {
+  return (
+    <View>
+      <FlatList
+        data={data}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <CategoryItem item={item} />
+        )}
+      />
+    </View>
+  );
+}
+export default HorizontalList;
+HorizontalList.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    category_name: PropTypes.string,
+  })).isRequired,
+};

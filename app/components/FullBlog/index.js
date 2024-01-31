@@ -1,69 +1,7 @@
 import * as React from 'react';
-import { Alert, ScrollView, StyleSheet, View ,TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-
-import { Button, Card, Paragraph, Title, Text } from 'react-native-paper';
-// const stringWithoutBackslashes = originalString.replace(/\\/g, '');
-
-
-
-export default FullBlog = ({
-  
-  item
-
-}) =>{
-
-  return (
-  // techable opacity
-
-
-  <ScrollView contentContainerStyle={styles.content}>
- 
-  <Card style={styles.card} >
-    <Card.Cover
-      source={{ uri:  `http://192.168.1.18/vSP/blog/backend/${item?.image1.replace(/\\/g, '')}` }}
-    />
-   
-    <Card.Title
-      title={item?.title}
-      subtitle={
-        item?.date
-      }
-    />
-
-    <Card.Content>
-      <Text variant="bodyMedium">
-        {/* http://10.0.2.2/vSP/blog/backend/images/1706512711IMG-20221209-WA0068-_1_.webp  */}
-       
-        {item?.description}
-      </Text>
-
-      {/* image */}
-      <Card.Cover
-        source={{ uri:   `http://192.168.1.18/vSP/blog/backend/${item?.image2.replace(/\\/g, '')}` }}
-        />
-         <Card.Cover
-        source={{ uri:   `http://192.168.1.18/vSP/blog/backend/${item?.image3.replace(/\\/g, '')}` }}
-        />
-         <Card.Cover
-        source={{ uri:   `http://192.168.1.18/vSP/blog/backend/${item?.image4.replace(/\\/g, '')}` }}
-        />
-         <Card.Cover
-        source={{ uri:   `http://192.168.1.18/vSP/blog/backend/${item?.image5.replace(/\\/g, '')}` }}
-        />
-        <Text variant="bodyMedium">
-      
-       
-        {item?.description2}
-      </Text>
-
-    </Card.Content>
-  </Card>
-  </ScrollView>
-  
-)
-};
+import { ScrollView, StyleSheet } from 'react-native';
+import { Card, Text } from 'react-native-paper';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
@@ -97,4 +35,58 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 24,
   },
 });
+function FullBlog({ item }) {
+  return (
+    <ScrollView contentContainerStyle={styles.content}>
+      <Card style={styles.card}>
+        <Card.Cover
+          source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image1.replace(/\\/g, '')}` }}
+        />
+        <Card.Title
+          title={item?.title}
+          subtitle={
+        item?.date
+      }
+        />
+        <Card.Content>
+          <Text variant="bodyMedium">
 
+            {item?.description}
+          </Text>
+          <Card.Cover
+            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image2.replace(/\\/g, '')}` }}
+          />
+          <Card.Cover
+            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image3.replace(/\\/g, '')}` }}
+          />
+          <Card.Cover
+            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image4.replace(/\\/g, '')}` }}
+          />
+          <Card.Cover
+            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image5.replace(/\\/g, '')}` }}
+          />
+          <Text variant="bodyMedium">
+            {item?.description2}
+          </Text>
+        </Card.Content>
+      </Card>
+    </ScrollView>
+  );
+}
+
+FullBlog.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    image1: PropTypes.string.isRequired,
+    image2: PropTypes.string.isRequired,
+    image3: PropTypes.string.isRequired,
+    image4: PropTypes.string.isRequired,
+    image5: PropTypes.string.isRequired,
+    description2: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default FullBlog;

@@ -35,5 +35,4 @@ describe('Redux Store Configuration', () => {
   });
 
   // Add more test cases as needed
-
 });

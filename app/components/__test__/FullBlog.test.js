@@ -16,16 +16,8 @@ describe('FullBlog', () => {
   };
 
   it('renders correctly', () => {
-    const { getByText, getByTestId } = render(<FullBlog item={mockItem} />);
-
-    // Check if specific elements are present in the rendered component
-   
+    const { getByText } = render(<FullBlog item={mockItem} />);
     expect(getByText('Test Description')).toBeTruthy();
- 
     expect(getByText('Test Description 2')).toBeTruthy();
-
-    // Add more assertions as needed based on your FullBlog component structure
   });
-
-  // Add more test cases as needed
 });

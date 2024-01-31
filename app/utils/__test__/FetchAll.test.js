@@ -19,5 +19,4 @@ describe('FetchAll', () => {
 
     await expect(FetchAll('https://fakestoreapi.com/categories')).resolves.toEqual(data);
   });
-  
 });

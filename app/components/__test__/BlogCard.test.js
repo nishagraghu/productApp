@@ -18,7 +18,7 @@ describe('BlogCard', () => {
     };
 
     const { getByText } = render(<BlogCard item={item} />);
-    
+
     expect(getByText(item.title)).toBeTruthy();
     expect(getByText(item.date)).toBeTruthy();
     expect(getByText(item.description.substring(0, 100))).toBeTruthy();
@@ -38,10 +38,10 @@ describe('BlogCard', () => {
     });
 
     const { getByTestId } = render(<BlogCard item={item} />);
-    
+
     const cardTouchable = getByTestId('cardTouchable'); // Adjust testID based on your actual implementation
     fireEvent.press(cardTouchable);
-    
+
     // Check if navigate function was called with the correct arguments
     expect(useNavigation().navigate).toHaveBeenCalledWith('Details', { item });
   });

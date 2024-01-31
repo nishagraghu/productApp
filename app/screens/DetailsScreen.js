@@ -1,15 +1,18 @@
-import {  View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import FullBlog from '../components/FullBlog';
 
-function DetailsScreen({route }) {
-   
-    const date  = route.params?.item;
-    return (
-      <View style={{ flex: 1 }}>
-       <FullBlog 
-       item={date} />
-      </View>
-    );
-  }
+// eslint-disable-next-line react/prop-types
+function DetailsScreen({ route }) {
+  // eslint-disable-next-line react/prop-types
+  const date = route.params?.item;
+  return (
+    <View style={{ flex: 1 }}>
+      <FullBlog
+        item={date}
+      />
+    </View>
+  );
+}
 
-  export default DetailsScreen;
+export default DetailsScreen;
