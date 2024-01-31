@@ -2,7 +2,7 @@ import React from 'react';
 import {
   View, Text, Image, StyleSheet, Linking,
 } from 'react-native';
-import { List, MD3Colors } from 'react-native-paper';
+import { List } from 'react-native-paper';
 import icon from '../../assets/icon.png';
 
 const styles = StyleSheet.create({
@@ -46,7 +46,10 @@ function SettingsScreen() {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Image source={icon} style={styles.image} />
       <View>
-        <Text style={styles.blog}>
+        <Text
+          style={styles.blog}
+          testID="blogText"
+        >
           Google is a multinational technology company specializing in
           internet-related services and products.
           It&apos;s a leading search engine, offers online advertising, cloud computing, software,
@@ -57,13 +60,11 @@ function SettingsScreen() {
           <List.Item
             testID="emailListItem"
             title="nishag619@gmail.com"
-            left={<List.Icon icon="email" />}
             onPress={handleEmailClick}
           />
           <List.Item
             title="8867460746"
             testID="phoneListItem"
-            left={<List.Icon color={MD3Colors.tertiary70} icon="phone" />}
             onPress={handlePhoneCall}
           />
           <View style={styles.iconContainer}>

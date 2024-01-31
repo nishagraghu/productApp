@@ -25,6 +25,18 @@ const mockStore = configureMockStore();
 
 describe('HomeScreen', () => {
   it('renders correctly', () => {
+    const store = mockStore({
+      counter: {
+        posts: [],
+        loading: false,
+        error: null,
+      },
+      categories: {
+        categories: [],
+        loading: false,
+        error: null,
+      },
+    });
     const fetchUserByDataData = [
       {
         id: 1,
@@ -61,6 +73,13 @@ describe('HomeScreen', () => {
     ];
     fetchUserByData.mockReturnValueOnce(fetchUserByDataData);
     fetchCategories.mockReturnValueOnce(fetchCategoriesData);
+    render(
+      <Provider store={store}>
+        <NavigationContainer>
+          <HomeScreen />
+        </NavigationContainer>
+      </Provider>,
+    );
     expect(fetchUserByData).toHaveBeenCalledTimes(1);
     expect(fetchCategories).toHaveBeenCalledTimes(1);
   });

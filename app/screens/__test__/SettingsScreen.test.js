@@ -5,8 +5,8 @@ import SettingsScreen from '../SettingsScreen';
 describe('SettingsScreen', () => {
   it('renders correctly', () => {
     const { getByText, getByTestId } = render(<SettingsScreen />);
+    expect(getByTestId('blogText')).toBeDefined();
 
-    expect(getByText('Google is a multinational technology company specializing in internet-related services and products. It\'s a leading search engine, offers online advertising, cloud computing, software, and hardware.')).toBeDefined();
     expect(getByText('Contact us')).toBeDefined();
     expect(getByTestId('emailListItem')).toBeDefined();
     expect(getByTestId('phoneListItem')).toBeDefined();

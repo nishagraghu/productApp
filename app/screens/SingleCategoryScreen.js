@@ -61,7 +61,7 @@ SingleCategoryScreen.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
       item: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
