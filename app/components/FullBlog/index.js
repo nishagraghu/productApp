@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Card, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import { IP } from '../../Const/urls';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +41,7 @@ function FullBlog({ item }) {
     <ScrollView contentContainerStyle={styles.content}>
       <Card style={styles.card}>
         <Card.Cover
-          source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image1.replace(/\\/g, '')}` }}
+          source={{ uri: `http://${IP}/vSP/blog/backend/${item?.image1.replace(/\\/g, '')}` }}
         />
         <Card.Title
           title={item?.title}
@@ -54,16 +55,16 @@ function FullBlog({ item }) {
             {item?.description}
           </Text>
           <Card.Cover
-            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image2.replace(/\\/g, '')}` }}
+            source={{ uri: `http://${IP}/vSP/blog/backend/${item?.image2.replace(/\\/g, '')}` }}
           />
           <Card.Cover
-            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image3.replace(/\\/g, '')}` }}
+            source={{ uri: `http://${IP}/vSP/blog/backend/${item?.image3.replace(/\\/g, '')}` }}
           />
           <Card.Cover
-            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image4.replace(/\\/g, '')}` }}
+            source={{ uri: `http://${IP}/vSP/blog/backend/${item?.image4.replace(/\\/g, '')}` }}
           />
           <Card.Cover
-            source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image5.replace(/\\/g, '')}` }}
+            source={{ uri: `http://${IP}/vSP/blog/backend/${item?.image5.replace(/\\/g, '')}` }}
           />
           <Text variant="bodyMedium">
             {item?.description2}

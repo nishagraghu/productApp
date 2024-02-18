@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Card, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import { IP } from '../../Const/urls';
 
 const styles = StyleSheet.create({
   container: {
@@ -49,7 +50,7 @@ function BlogCard({ item }) {
     >
       <Card style={styles.card}>
         <Card.Cover
-          source={{ uri: `http://192.168.1.18/vSP/blog/backend/${item?.image1.replace(/\\/g, '')}` }}
+          source={{ uri: `http://${IP}/vSP/blog/backend/${item?.image1.replace(/\\/g, '')}` }}
         />
 
         <Card.Title

@@ -3,6 +3,7 @@ import React from 'react';
 import {
   View, FlatList,
 } from 'react-native';
+
 import PropTypes from 'prop-types';
 
 import CategoryItem from '../CategoryItem';

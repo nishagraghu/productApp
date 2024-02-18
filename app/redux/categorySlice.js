@@ -8,8 +8,8 @@ const initialState = {
 };
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
-  async () => {
-    const response = await fetch('http://192.168.1.22/vSP/data.php?data=categories');
+  async (parameter) => {
+    const response = await fetch(parameter);
     const data = await response.json();
     return data;
   },
